@@ -15,7 +15,7 @@ pip install -r requirements.txt
 ## Usage
 1. Load up the service
 ```
-python app.py
+python.exe app.py
 ```
 
 2. Send apps ids
