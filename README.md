@@ -31,6 +31,7 @@ app_sender/app_sender.exe
 
 ### Web application thread
 A thread that runs a simple flask application, listens on localhost:5000.
+
 Support one method - GET /ScrapApp?id=ABC.
 For each app id, this thread insert the id to a simple thread-safe ids-queue (python Queue).
 
