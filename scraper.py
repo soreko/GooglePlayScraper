@@ -3,6 +3,7 @@ import time
 from multiprocessing import Pool, Lock, cpu_count
 import copy_reg
 import types
+import urllib3
 
 
 # This method is here for the multiprocessing Pool apply_async() to work
@@ -24,6 +25,12 @@ def init_lock(l):
 
 class IScraper(object):
     def scrap(self, unique_id, proxy):
+        """
+        scraps a page with unique_id via proxy
+        :param unique_id: any
+        :param proxy: dict {protocol_str: address_str}
+        :return: dictionary with data
+        """
         raise NotImplementedError()
 
 
@@ -114,10 +121,14 @@ class GooglePlayScraper(IScraper):
         :param unique_id: id of the google app we're scraping
         :param proxy: dict {protocol: address}
         """
+
+        details_dict = {'id': unique_id.strip()}
+
         try:
             app_url = self.CRAWL_URL.format(unique_id.strip())
 
             # send request to Google
+            urllib3.disable_warnings()
             response = requests.get(url=app_url, proxies=proxy)
 
             if response.status_code == requests.codes.ok:
@@ -128,18 +139,16 @@ class GooglePlayScraper(IScraper):
                 items_dict = self._items_manager.get_items(page)
 
                 if items_dict:
-                    items_dict['id'] = unique_id
+                    details_dict.update(items_dict)
 
                     # output all items
-                    self._output_manager.output(items_dict, lock)
-
-                    return items_dict
+                    self._output_manager.output(details_dict, lock)
 
         except Exception as e:
             # TODO: add failure message
             pass
 
-        return None
+        return details_dict
 
 
 
