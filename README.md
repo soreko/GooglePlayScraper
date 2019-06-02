@@ -6,11 +6,15 @@ This application runs a service thats gets a package id and retrieves its email,
 
 You can send a list of app IDs by running app_sender.exe.
 
+
+
 ## Installation
 Make sure Python 2.7 is installed and Install requirements:
 ```
 pip install -r requirements.txt
 ```
+
+
 
 ## Usage
 1. Load up the service
@@ -24,6 +28,8 @@ app_sender/app_sender.exe
 ```
 
 3. Tail output.txt for apps details
+
+
 
 ## Architecture
 2 main threads are running:
@@ -45,6 +51,8 @@ For each id it gets from the queue:
 2. Asks from Proxy manager for an available proxy. In case no proxy is avaiable it waits for 2 seconds and asks again.
 3. Spawns a new process with a GoogleScrapper, and the given app id and proxy.
 4. When a process successfully returns, it saves the result to the cache.
+
+
 
 
 
