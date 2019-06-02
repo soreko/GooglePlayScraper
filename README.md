@@ -9,22 +9,32 @@ You can send a list of app IDs by running app_sender.exe.
 
 
 ## Installation
-Make sure Python 2.7 is installed and Install requirements:
+1. Make sure Python 2.7 is installed and Install requirements:
 ```
 pip install -r requirements.txt
 ```
 
+2. Make sure golang is installed and build app_sender. In app_sender folder, run:
+```
+go build
+```
 
 
 ## Usage
 1. Load up the service
 ```
-python.exe app.py
+python app.py
 ```
 
 2. Send apps ids
+Windows:
 ```
 app_sender/app_sender.exe
+```
+
+Linux:
+```
+./app_sender/app_sender
 ```
 
 3. Tail output.txt for apps details

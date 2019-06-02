@@ -87,6 +87,9 @@ class Proxy:
     def unblock(self):
         self._blocked = False
 
+    def block(self):
+        self._blocked = True
+
     def update_last_used(self):
         self._last_used_timestamp.now()
 
