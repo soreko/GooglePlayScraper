@@ -2,9 +2,10 @@
 Google Play App Store scraper 
 
 ## Intro
-This application runs a service thats gets a package id and retrieves its email, title and icon, and outputs it to an output.txt file.
+This application runs a service thats gets a package id and retrieves its email, title and icon,  <br />
+and outputs it to an output.txt file.
 
-You can send a list of app IDs by running app_sender.exe.
+You can send a list of app IDs by running app_sender.
 
 
 
