@@ -72,8 +72,8 @@ For each id it gets from the queue:
 1. Flask web application should be wrapped with Nginx or Apache or any other web server in production.
 2. I used a ProcessPool and not a ThreadPool, because of python GIL (no real parallelism).
 3. The ProcessPool is initialized to number of cores size, it can be increased in order to use more CPU. 
-4. In real world I would use a permenent Queue (e.g. RabbitMQ), to support crash recovering - lost data. 
-5. In real world I would use a permenent Cache (e.g. Redis), to support crash recovering - all cache flushed.
+4. In real world I would use a permenent Queue (e.g. RabbitMQ), to support crash recovering - lost app ids. 
+5. In real world I would use a permenent Cache (e.g. Redis), to support crash recovering - lost app responses.
 
 
 
