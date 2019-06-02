@@ -23,7 +23,7 @@ go build
 
 
 ## Usage
-1. Load up the service (runs on localhost:5000)
+1. Start the service (runs on localhost:5000)
 ```
 python app.py
 ```
