@@ -23,12 +23,12 @@ go build
 
 
 ## Usage
-1. Load up the service
+1. Load up the service (runs on localhost:5000)
 ```
 python app.py
 ```
 
-2. Send apps ids  <br />
+2. Send apps ids (sends to localhost:5000) <br />
 Windows:
 ```
 app_sender/app_sender.exe
