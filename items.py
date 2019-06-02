@@ -32,7 +32,7 @@ class IAppItem(object):
     def get_data(self, html_page):
         """
         gets the relevant data from an html page
-        :param html_page: html page
+        :param html_page: html page as string
         :return: data as string
         """
         raise NotImplementedError()
