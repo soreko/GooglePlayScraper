@@ -53,7 +53,6 @@ For each id it gets from the queue:
 2. The ProcessPool is initialized to number of cores size, it can be increased in order to use more CPU. 
 3. In real world I would use a permenent Queue (saves data to disk), to support crash recovering - lost data. 
 4. In real world I would use a permenent Cache (like redis), to support crash recovering - all cache flushed.
-5. I used dependency inversion as match as I can to ease the testing.
 
 
 
