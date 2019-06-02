@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup, SoupStrainer
+import re
 
 
 class ItemsManager:
@@ -20,11 +20,8 @@ class ItemsManager:
 
         result = {}
 
-        # parse HTML page with BeautifulSoup - most consuming time operation
-        soup = BeautifulSoup(page, 'html.parser')
-
         for app_item in self._app_items:
-            data = app_item.get_data(soup)
+            data = app_item.get_data(page)
             result[app_item.name()] = data
 
         return result
@@ -55,12 +52,12 @@ class TitleAppItem(IAppItem):
     def __init__(self):
         self._name = 'title'
 
-    def get_data(self, html_page_soup):
+    def get_data(self, html_page):
 
-        data = html_page_soup.find('meta', itemprop='name')
+        match = re.findall('meta itemprop="name" content="([^"]+)"', html_page)
 
-        if data:
-            data = data.get('content', '')
+        if match:
+            data = match[0]
 
         else:
             data = ''
@@ -78,12 +75,12 @@ class IconAppItem(IAppItem):
     def __init__(self):
         self._name = 'icon'
 
-    def get_data(self, html_page_soup):
+    def get_data(self, html_page):
 
-        data = html_page_soup.find('meta', itemprop='image')
+        match = re.findall('meta itemprop="image" content="([^"]+)"', html_page)
 
-        if data:
-            data = data.get('content', '')
+        if match:
+            data = match[0]
 
         else:
             data = ''
@@ -101,12 +98,12 @@ class EmailAppItem(IAppItem):
     def __init__(self):
         self._name = 'email'
 
-    def get_data(self, html_page_soup):
-        import re
-        data = html_page_soup.find('a', href=re.compile("mailto:"))
+    def get_data(self, html_page):
 
-        if data:
-            data = data.get_text()
+        match = re.findall('a href="mailto:([^"]+)"', html_page)
+
+        if match:
+            data = match[0]
 
         else:
             data = ''

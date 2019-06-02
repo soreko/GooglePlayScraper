@@ -1,6 +1,5 @@
 aniso8601==6.0.0
 backports.functools-lru-cache==1.5
-beautifulsoup4==4.7.1
 certifi==2019.3.9
 chardet==3.0.4
 Click==7.0

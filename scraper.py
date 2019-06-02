@@ -129,7 +129,7 @@ class GooglePlayScraper(IScraper):
 
             # send request to Google
             urllib3.disable_warnings()
-            response = requests.get(url=app_url, proxies=proxy)
+            response = requests.get(url=app_url, proxies=proxy, verify=False)
 
             if response.status_code == requests.codes.ok:
 
