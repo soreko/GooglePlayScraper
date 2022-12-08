@@ -1,6 +1,6 @@
 aniso8601==6.0.0
 backports.functools-lru-cache==1.5
-certifi==2019.3.9
+certifi==2022.12.7
 chardet==3.0.4
 Click==7.0
 Flask==1.0.3
